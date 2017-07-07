@@ -6,13 +6,12 @@ function getJSONfile() {
 	if (fs.readFileSync('datas.json').length !== 0) {
 		obj = JSON.parse(fs.readFileSync('datas.json'));
 	}
-	// console.log("object - " + obj.length);
 	return obj;
 }
 
 switch (process.argv[2]) {
 	case 'add':
-		if (process.argv[3] === undefined){
+		if (process.argv[3] === undefined) {
 			console.log("Please insert TITLE");
 		} else if (process.argv[4] === undefined) {
 			console.log("Please insert BODY");
@@ -25,14 +24,14 @@ switch (process.argv[2]) {
 		modul.listDatas(getJSONfile());
 		break;
 	case 'read':
-		if (process.argv[3] === undefined){
+		if (process.argv[3] === undefined) {
 			console.log("Please insert TITLE");
 		} else {
 			modul.readData(getJSONfile(), process.argv[3]);
 		}
 		break;
 	case 'remove':
-		if (process.argv[3] === undefined){
+		if (process.argv[3] === undefined) {
 			console.log("Please insert TITLE");
 		} else {
 			var objJSON = modul.removeData(getJSONfile(), process.argv[3]);
