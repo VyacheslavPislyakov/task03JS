@@ -8,19 +8,33 @@ function getJSONfile() {
 
 switch (process.argv[2]) {
 	case 'add':
-		var objJSON = modul.addData(getJSONfile(), process.argv[3], process.argv[4]);
-		fs.writeFileSync('datas.json', JSON.stringify(objJSON));
+		if (process.argv[3] === undefined){
+			console.log("Please insert TITLE");
+		} else if (process.argv[4] === undefined) {
+			console.log("Please insert BODY");
+		} else {
+			var objJSON = modul.addData(getJSONfile(), process.argv[3], process.argv[4]);
+			fs.writeFileSync('datas.json', JSON.stringify(objJSON));
+		}
 		break;
 	case 'list':
-		var objJSON = modul.listDatas(getJSONfile(), process.argv[3], process.argv[4]);
+		modul.listDatas(getJSONfile());
 		break;
 	case 'read':
-		var objJSON = modul.readData(getJSONfile(), process.argv[3], process.argv[4]);
+		if (process.argv[3] === undefined){
+			console.log("Please insert TITLE");
+		} else {
+			modul.readData(getJSONfile(), process.argv[3]);
+		}
 		break;
 	case 'remove':
-		var objJSON = modul.removeData(getJSONfile(), process.argv[3], process.argv[4]);
-		fs.writeFileSync('datas.json', JSON.stringify(objJSON));
+		if (process.argv[3] === undefined){
+			console.log("Please insert TITLE");
+		} else {
+			var objJSON = modul.removeData(getJSONfile(), process.argv[3]);
+			fs.writeFileSync('datas.json', JSON.stringify(objJSON))
+		}
 		break;
 	default:
-		console.log("Please write a method");
+		console.log("Please write any method");
 }
