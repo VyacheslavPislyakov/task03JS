@@ -2,7 +2,11 @@ var fs = require('fs');
 var modul = require('./moduls');
 
 function getJSONfile() {
-	var obj = JSON.parse(fs.readFileSync('datas.json'));
+	var obj = {};
+	if (fs.readFileSync('datas.json').length !== 0) {
+		obj = JSON.parse(fs.readFileSync('datas.json'));
+	}
+	// console.log("object - " + obj.length);
 	return obj;
 }
 
@@ -37,4 +41,5 @@ switch (process.argv[2]) {
 		break;
 	default:
 		console.log("Please write any method");
+		getJSONfile();
 }

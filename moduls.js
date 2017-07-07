@@ -8,9 +8,14 @@ function addData(objJSON, title, body) { //Add data to JSON file
 }
 
 function listDatas(objJSON) { //get list datas of JSON file
-	for (var item in objJSON) {
-		console.log('title - ' + objJSON[item]['title'] + '; body - ' + objJSON[item]['body']);
+	if (objJSON == {}) {
+		for (var item in objJSON) {
+			console.log('title - ' + objJSON[item]['title'] + '; body - ' + objJSON[item]['body']);
+		}
+	} else {
+		console.log("У вас пустой JSON файл");
 	}
+
 }
 
 function readData(objJSON, title) { //read string from JSON file
